@@ -76,7 +76,7 @@ public class ImageUtils {
         }   
     } 
 	public static void main(String[] args) throws Exception {
-		ImageUtils imgUtils = new ImageUtils("C:/Users/Administrator/Pictures/1120150524180314.jpg");
+		ImageUtils imgUtils = new ImageUtils("D:\\software\\PHP\\Ecshop\\teb\\src\\main\\webapp\\attachment\\images\\a56dc1be240b8648e4cad01cf817976d.jpg");
 		imgUtils.resize(1000, 1000);
 	}
 

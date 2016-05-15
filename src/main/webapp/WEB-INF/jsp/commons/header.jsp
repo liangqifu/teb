@@ -7,9 +7,12 @@
 			<img alt="" src="/resources/public/images/logo.jpg">
 			<div class="top-right">
 				<form class="ym-searchform">
-				<c:if test="${language eq en}">
+				<%-- <c:if test="${language eq en}">
 					<a href="https://twitter.com/caritglobal" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false">Follow @caritglobal</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></c:if><input class="ym-searchfield" type="search" placeholder="Search..." /><input class="ym-searchbutton" type="submit" value="" />
+                       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </c:if> --%>
+                <input class="ym-searchfield" type="search" placeholder="搜索..." />
+               <input class="ym-searchbutton" type="submit" value="" />
 				</form>
 				<div class="language">
 				<label><spring:message code="title.language"/></label>

@@ -56,7 +56,7 @@
 									<ul id="catalog-container">
 										<li id=""><spring:message code="Catalog.all" /></li>
 										<c:forEach items="${catalogList}" var="catalog">
-											<li id="${catalog.id}"><spring:message code="Catalog.${catalog.catalogCode}" /></li>
+											<li id="${catalog.id}">${catalog.description}</li>
 										</c:forEach>
 									</ul>
 								</div>

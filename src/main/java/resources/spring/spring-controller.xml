@@ -49,6 +49,7 @@
 		up static resources in the ${webappRoot}/resources/ directory -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:resources mapping="/html/**" location="/html/" />
+	<mvc:resources mapping="/attachment/**" location="/attachment/" />
 	<!-- 允许直接访问配置文件 -->
 	<mvc:resources mapping="/*.properties" location="/" />
 

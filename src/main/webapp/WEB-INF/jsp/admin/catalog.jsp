@@ -98,7 +98,7 @@
 				<a href="javascript:void();" class="easyui-linkbutton" id="reset"
 					iconCls="icon-undo">重 置</a>
 			</div>
-			<table id="tt" style="height: auto;" iconCls="icon-blank" title="车系分类列表" align="left"  
+			<table id="tt" style="height: auto;" iconCls="icon-blank" title="分类列表" align="left"  
 			idField="id" url="${ctx}/admin/catalog/query" pagination="true" rownumbers="true"
 			fitColumns="true" pageList="[10,15, 20]" sortName="displayIndex" sortOrder="asc">
 				<thead>
@@ -113,7 +113,7 @@
 				</thead>
 			</table>
 		</div>
-		<div id="editWin" class="easyui-window" title="车系分类" closed="true" style="width:500px;height:280px;padding:5px;" modal="true">
+		<div id="editWin" class="easyui-window" title="分类" closed="true" style="width:500px;height:280px;padding:5px;" modal="true">
 			<form:form modelAttribute="catalog" id="editForm" action="${ctx}/admin/catalog/save" method="post" cssStyle="padding:10px 20px;" enctype="multipart/form-data">
 				<table>
 					<tr>

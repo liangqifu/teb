@@ -30,13 +30,10 @@ public class AdminInterceptor extends HandlerInterceptorAdapter{
 		if (log.isDebugEnabled()) {
 			log.debug("hostPath: "+hostPath);
 		}
-		String contexPath="/";
 		int port=request.getLocalPort();
-		hostPath+=":"+port+contexPath;
-		/*if (uri.indexOf(contexPath)!=-1) { // 开发环境
-			uri=uri.replaceFirst(contexPath, "");
-			hostPath+=":"+port+contexPath;
-		}*/
+		if(port!=80){
+			hostPath+=":"+port;
+		}
 		// 初始化附件配置
 		AttachmentUtil.init(hostPath);
 		if (log.isDebugEnabled()) {

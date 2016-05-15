@@ -78,7 +78,7 @@
 							$.messager.alert('错误', "编辑失败", 'error');
 			    		} else if(data>0){
 							$.messager.alert('成功', "编辑成功", 'info');
-				        	$('#editVersionWin').window('close');
+				        	$('#editWin').window('close');
 				        	// update rows
 				        	$('#tt').datagrid('reload');
 						}else{

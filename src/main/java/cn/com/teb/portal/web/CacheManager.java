@@ -266,10 +266,10 @@ public class CacheManager {
 	 * @return
 	 */
 	public Locale getSupportedLocale(String languageCode){
-		if (supportLocaleCache.containsKey(languageCode)) {
+		/*if (supportLocaleCache.containsKey(languageCode)) {
 			return supportLocaleCache.get(languageCode);
-		}
-		return Locale.US;
+		}*/
+		return Locale.SIMPLIFIED_CHINESE;
 	}
 
 }

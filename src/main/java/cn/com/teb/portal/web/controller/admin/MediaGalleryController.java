@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import cn.com.teb.common.Constants;
 import cn.com.teb.common.utils.AttachmentUtil;
 import cn.com.teb.common.utils.DataGridModel;
+import cn.com.teb.common.utils.ImageUtils;
 import cn.com.teb.common.utils.JsonPage;
 import cn.com.teb.common.utils.MD5Util;
 import cn.com.teb.portal.bean.MediaGallery;
@@ -69,15 +70,23 @@ public class MediaGalleryController {
     	if (multipartFile!=null && multipartFile.getOriginalFilename().length()>0) { // 上传文件
     		String prefix=MD5Util.md5Hex(System.nanoTime()+"");
     		String suffix = multipartFile.getOriginalFilename().substring(
-    				multipartFile.getOriginalFilename().lastIndexOf(".")-1);
-    		String fileName = (prefix + "." + suffix).toLowerCase();// 构建文件名称
+    				multipartFile.getOriginalFilename().lastIndexOf("."));
+    		String fileName = (prefix + suffix).toLowerCase();// 构建文件名称
     		String hostPath="http://"+request.getServerName();
+    		int port = request.getLocalPort();
+    		if(port!=80){
+    			hostPath+=":"+port;
+    		}
     		if (media.getType()==MediaGallery.TYPE_FLV) {
     			media.setUrl(hostPath+Constants.BASE_PATH_FLASH+fileName);
 			} else {
 				media.setUrl(hostPath+Constants.BASE_PATH_IMAGE+fileName);
 			}
     		multipartFile.transferTo(AttachmentUtil.getImageFile(fileName));
+    		if (media.getType()==MediaGallery.TYPE_IMG) {
+    			ImageUtils imgUtils = new ImageUtils(AttachmentUtil.getImagePath(fileName));
+        		imgUtils.resize(250, 200);
+    		}
 		}
     	service.saveOrUpdate(media);
 		resultMap.put(Constants.ANSWER_CODE, 1);

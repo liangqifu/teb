@@ -10,6 +10,7 @@
 		<script type="text/javascript">
 		var contentEditer;
 		var updateId;
+		var updateId_thumb='';
 		$(function(){
 			contentEditer=simpleEditer('content');
 			var array='${product.picture}'.split(';');
@@ -134,6 +135,11 @@
 				        	$('#uploadForm input:not(:hidden)').val('');
 				        	$('#mediaWin').window('close');
 				        	$('#'+updateId).val(map.url).removeClass('validatebox-invalid');
+				        	if(updateId_thumb!=''){
+				        		var strs = new Array(); //定义一数组 
+				        		var s = map.url.substring(0,map.url.lastIndexOf("."))+"_thumb"+map.url.substring(map.url.lastIndexOf("."));
+					        	$('#'+updateId_thumb).val(s).removeClass('validatebox-invalid');
+				        	}
 						}else{
 			    			$.messager.alert('异常', "后台系统异常", 'error');
 						}
@@ -148,10 +154,23 @@
 			$('#mediaWin').show();
 			return false;
 		}
+		function media2(target,target_thumb){
+			updateId=target;
+			updateId_thumb=target_thumb;
+			$('div.validatebox-tip').remove();
+			$('#mediaWin').window('open');
+			$('#mediaWin').show();
+			return false;
+		}
 		function edit(){}
 		function select(){
 			var m = $('#ttt').datagrid('getSelected');
 			$('#'+updateId).val(m.url).removeClass('validatebox-invalid');
+			if(updateId_thumb!=''){
+        		var strs = new Array(); //定义一数组 
+        		var s = m.url.substring(0,m.url.lastIndexOf("."))+"_thumb"+m.url.substring(m.url.lastIndexOf("."));
+	        	$('#'+updateId_thumb).val(s).removeClass('validatebox-invalid');
+        	}
 			$('#mediaWin').window('close');
 			buildPic();
 		}
@@ -190,33 +209,39 @@
 					<tr>
 						<td><form:label	for="language" path="language" cssClass="mustInput">语言：</form:label></td>
 						<td><form:input path="language" id="language_edit" required="true" cssStyle="width:187px"/></td>
-						<td><form:label	for="catalogId" path="catalogId" cssClass="mustInput">车型：</form:label></td>
+						<td><form:label	for="catalogId" path="catalogId" cssClass="mustInput">所属分类：</form:label></td>
 						<td><form:input path="catalogId" id="catalogId_edit" required="true" cssStyle="width:187px"/></td>
 					</tr>
 					<tr>
 						<td><form:label	for="mainPic" path="mainPic" cssClass="mustInput">主图：</form:label></td>
-						<td><form:input path="mainPic" id="mainPic_edit" required="true" class="easyui-validatebox" cssStyle="width:137px"/><span class="spanBtn" onclick="media('mainPic_edit')">浏览</button></td>
+						<td>
+						    <form:input path="mainPic" id="mainPic_edit" required="true" class="easyui-validatebox" cssStyle="width:137px"/>
+						    <span class="spanBtn" onclick="media2('mainPic_edit','thumb_edit')">浏览</span>
+						</td>
 						<td><form:label	for="thumb" path="thumb" cssClass="mustInput">缩略图：</form:label></td>
-						<td><form:input path="thumb" id="thumb_edit" required="true" class="easyui-validatebox" cssStyle="width:137px"/><span class="spanBtn" onclick="media('thumb_edit')">浏览</button></td>
+						<td>
+						    <form:input path="thumb" id="thumb_edit" required="true" class="easyui-validatebox" cssStyle="width:137px"/>
+						    <!-- <span class="spanBtn" onclick="media('thumb_edit')">浏览</span> -->
+						</td>
 					</tr>
 					
 					<tr>
 						<td><form:label	for="thumb" path="thumb" cssClass="mustInput">截图1：</form:label></td>
-						<td><input type="text" id="picture_1" required="true" class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_1')">浏览</span></td>
+						<td><input type="text" id="picture_1"  class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_1')">浏览</span></td>
 						<td><form:label	for="thumb" path="thumb" cssClass="mustInput">截图2：</form:label></td>
-						<td><input type="text" id="picture_2" required="true" class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_2')">浏览</span></td>
+						<td><input type="text" id="picture_2"  class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_2')">浏览</span></td>
 					</tr>
 					<tr>
 						<td><form:label	for="thumb" path="thumb" cssClass="mustInput">截图3：</form:label></td>
-						<td><input type="text" id="picture_3" required="true" class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_3')">浏览</span></td>
+						<td><input type="text" id="picture_3"  class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_3')">浏览</span></td>
 						<td><form:label	for="thumb" path="thumb" cssClass="mustInput">截图4：</form:label></td>
-						<td><input type="text" id="picture_4" required="true" class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_4')">浏览</span></td>
+						<td><input type="text" id="picture_4"  class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_4')">浏览</span></td>
 					</tr>
 					<tr>
 						<td><form:label	for="thumb" path="thumb" cssClass="mustInput">截图5：</form:label></td>
-						<td><input type="text" id="picture_5" required="true" class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_5')">浏览</span></td>
+						<td><input type="text" id="picture_5"  class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_5')">浏览</span></td>
 						<td><form:label	for="thumb" path="thumb" cssClass="mustInput">截图6：</form:label></td>
-						<td><input type="text" id="picture_6" required="true" class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_6')">浏览</span></td>
+						<td><input type="text" id="picture_6"  class="easyui-validatebox" style="width:137px"/><span class="spanBtn" onclick="media('picture_6')">浏览</span></td>
 					</tr>
 					<tr>
 						<td><form:label	for="status" path="status" cssClass="mustInput">状态：</form:label></td>

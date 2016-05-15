@@ -60,6 +60,7 @@ public class IndexController extends BaseController{
 	}
 	
 	private void doLocalIndex(String language){
+		CacheManager.getInstance().refreshCache();
 		// 获取 Locale
 		Locale locale=CacheManager.getInstance().getSupportedLocale(language);
 		// 切换语言

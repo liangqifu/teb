@@ -51,14 +51,14 @@
 				        <img src="${ad.image}" title="${ad.name}" alt="${ad.name}" />
 				        </c:forEach>
 					</div>
-				    <ul id="banner-number">
+				     <ul id="banner-number">
 				        <c:forEach items="${bannerAdList}" var="ad" begin="0" end="4" varStatus="index">
 				        <!--
 				         <li <c:if test="${index.count eq 1}">class="on"</c:if> value="${index.count}"><a href="${ad.href}" target="_about"><img alt="${ad.name}" src="${ad.thumb}"/></a></li>
 				         -->
 				         <li value="${index.count}"><a href="${ad.href}" target="_about"><img alt="${ad.name}" src="${ad.thumb}"/></a></li>
 				        </c:forEach>
-				    </ul>
+				    </ul> 
 				</div>
 				<section class="box news-box">
 					<div class="ym-grid linearize-level-1">
